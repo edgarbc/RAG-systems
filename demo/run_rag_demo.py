@@ -80,14 +80,14 @@ class EmbeddingRetriever:
         Returns:
             List of (document, score) tuples
         """
-        query_embedding = self.model.encode([query], show_progress_bar=False)[0]
+        query_embedding = self.model.encode(query, show_progress_bar=False)
         
         # Compute cosine similarities
         similarities = np.dot(self.doc_embeddings, query_embedding) / (
             np.linalg.norm(self.doc_embeddings, axis=1) * np.linalg.norm(query_embedding)
         )
         
-        # Get top-k indices
+        # Get top-k indices (efficient for small corpora)
         top_indices = np.argsort(similarities)[::-1][:top_k]
         
         results = []
@@ -278,7 +278,11 @@ def main():
         print(f"\nTop {top_k} Retrieved Documents:")
         for i, (doc, score) in enumerate(results, 1):
             print(f"  {i}. [{score:.4f}] {doc['title']}")
-            print(f"     {doc['content'][:100]}...")
+            # Truncate at word boundary to avoid cutting words
+            content = doc['content']
+            if len(content) > 100:
+                content = content[:100].rsplit(' ', 1)[0] + "..."
+            print(f"     {content}")
         
         # Format prompt (shows what would be sent to LLM)
         prompt = format_rag_prompt(query, results)
