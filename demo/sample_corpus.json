@@ -1,0 +1,29 @@
+{
+  "documents": [
+    {
+      "id": "doc1",
+      "title": "Introduction to RAG",
+      "content": "Retrieval-Augmented Generation (RAG) is a technique that combines information retrieval with text generation. It retrieves relevant documents from a knowledge base and uses them as context for generating accurate responses."
+    },
+    {
+      "id": "doc2",
+      "title": "Benefits of RAG Systems",
+      "content": "RAG systems improve factual accuracy by grounding answers in external documents. They help reduce hallucinations in large language models by providing verifiable source material for generated responses."
+    },
+    {
+      "id": "doc3",
+      "title": "RAG Architecture Components",
+      "content": "A typical RAG system consists of three main components: a retriever that finds relevant documents, an encoder that creates embeddings, and a generator that produces the final response using the retrieved context."
+    },
+    {
+      "id": "doc4",
+      "title": "Evaluation Metrics for RAG",
+      "content": "Common evaluation metrics for RAG systems include context precision, context recall, faithfulness, and answer correctness. These metrics help assess both retrieval quality and generation accuracy."
+    },
+    {
+      "id": "doc5",
+      "title": "RAG vs Fine-tuning",
+      "content": "Unlike fine-tuning which modifies model weights, RAG keeps the base model frozen and augments it with external knowledge at inference time. This makes RAG more flexible and easier to update with new information."
+    }
+  ]
+}

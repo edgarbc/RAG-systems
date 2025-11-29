@@ -1,0 +1,9 @@
+# Core dependencies for RAG demo
+# Lightweight set - no heavy native deps like faiss-cpu or torch
+
+transformers>=4.0.0
+sentence-transformers>=2.0.0
+rank_bm25>=0.2.2
+tqdm
+numpy
+scikit-learn
